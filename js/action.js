@@ -1,5 +1,6 @@
-function startGame() {
+//Начать игру
 
+function startGame() {
 
 const emojiArray = ['🦁', '🐵', '🦊', '🐱', '🐭', '🐹', '🐻', '🐨'];
 
@@ -28,42 +29,13 @@ const addAnimal = document.createTextNode(getRandomEmoji);
 
 document.getElementById("animal-box").appendChild(addAnimal);
 
-}
+};
 
 
+//Посмотреть правила игры
 
+function showRules() {
+    const rulesBtn = document.getElementsById("rules");
+    rulesBtn.style.display = "block";
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*document.body.innerText = String.fromCodePoint();*/

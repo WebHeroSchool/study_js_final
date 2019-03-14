@@ -256,6 +256,11 @@ body {
   padding-bottom: 0.7rem;
 }
 
-.popup {
+.popup__rules {
  display: none;
 }
+
+
+.popup__game-over {
+  display: none;
+ }

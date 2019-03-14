@@ -31,7 +31,7 @@
       </div>
       <div class="nav__control">
         <button type="button" class="btn control__start-btn" onclick="startGame();">Начать</button>
-        <button type="button" class="btn control__rules-btn">?</button>
+        <button type="button" class="btn control__rules-btn" onclick="showRules();">?</button>
       </div>
     </section>
     <section class="game__zone">
@@ -55,7 +55,7 @@
       <p class="game-over__score-text">очков!</p>
       <button type="button" class="btn popup__ok">OK</button>
     </div>
-    <div class="popup popup__rules">
+    <div class="popup popup__rules" id="rules">
       <div class="popup__title">
         <p class="title__text">Правила игры</p>
       </div>
