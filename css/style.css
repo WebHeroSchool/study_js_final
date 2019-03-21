@@ -126,6 +126,10 @@ body {
   text-transform: uppercase;
 }
 
+button[type="button"]:disabled {
+  color: gray;
+}
+
 .control__rules-btn {
   width: 55px;
   font-size: 1.3rem;
@@ -158,16 +162,10 @@ body {
   box-shadow: inset 0px 9px 10px rgba(0, 0, 0, 0.2);
 }
 
-.mink__animal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: -50px;
-}
-
 .animal-box {
   font-size: 8rem;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
 }
 
 .zone__mink:nth-of-type(2) {
@@ -258,9 +256,20 @@ body {
 
 .popup__rules {
  display: none;
+ animation-duration: 2s;
+ animation-name: opacity;
 }
-
 
 .popup__game-over {
   display: none;
  }
+
+@keyframes opacity {
+  from {
+    opacity: 0; 
+  }
+
+  to {
+opacity: 1;
+  }
+}

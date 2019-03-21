@@ -30,20 +30,27 @@
         </div>
       </div>
       <div class="nav__control">
-        <button type="button" class="btn control__start-btn" onclick="startGame();">Начать</button>
+        <button type="button" class="btn control__start-btn"  id="btn" onclick="startGame();">Начать</button>
         <button type="button" class="btn control__rules-btn" onclick="showRules();">?</button>
       </div>
     </section>
     <section class="game__zone">
       <div class="zone__box">
-        <div class="zone__mink" id="mink">
+        <div class="zone__mink" id="mink1">
+          <div class="animal-box"></div>
         </div>
-        <div class="zone__mink" id="mink"></div>
-        <div class="zone__mink" id="mink">
+        <div class="zone__mink" id="mink2">
+          <div class="animal-box"></div>
         </div>
-        <div class="zone__mink" id="mink">
+        <div class="zone__mink" id="mink3">
+          <div class="animal-box"></div>
         </div>
-        <div class="zone__mink" id="mink"></div>
+        <div class="zone__mink" id="mink4">
+          <div class="animal-box"></div>
+        </div>
+        <div class="zone__mink" id="mink5">
+          <div class="animal-box"></div>
+        </div>
       </div>
     </section>
     <div class="popup popup__game-over">
@@ -53,7 +60,7 @@
       <p class="game-over__text">Поздравляем! Вы набрали:</p>
       <p class="game-over__score">0</p>
       <p class="game-over__score-text">очков!</p>
-      <button type="button" class="btn popup__ok">OK</button>
+      <button type="button" class="btn popup__ok" id="accept" onclick="accept();">OK</button>
     </div>
     <div class="popup popup__rules" id="rules">
       <div class="popup__title">
@@ -67,7 +74,7 @@
         <li>Если клик был выполнен по другому emoji, то у игрока отнимается жизнь. Всего 3 жизни. Если жизни
           закончились, то игра останавливается. </li>
       </ol>
-      <button type="button" class="btn popup__ok">OK</button>
+      <button type="button" class="btn popup__ok" onclick="accept();">OK</button>
     </div>
   </main>
   <script src="js/action.js"></script>
