@@ -1,5 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   margin: 10px auto;
 }
 
@@ -115,10 +116,18 @@ body {
   cursor: pointer;
 }
 
+.btn:focus {
+  display: none;
+}
+
 .control__start-btn {
   min-width: 220px;
   font-size: 1.1rem;
   text-transform: uppercase;
+}
+
+button[type="button"]:disabled {
+  color: gray;
 }
 
 .control__rules-btn {
@@ -143,11 +152,20 @@ body {
 }
 
 .zone__mink {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   width: 225px;
   height: 167px;
   background: #AE8348;
   border-radius: 50%;
   box-shadow: inset 0px 9px 10px rgba(0, 0, 0, 0.2);
+}
+
+.animal-box {
+  font-size: 8rem;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
 }
 
 .zone__mink:nth-of-type(2) {
@@ -236,6 +254,22 @@ body {
   padding-bottom: 0.7rem;
 }
 
-.popup {
+.popup__rules {
+ display: none;
+ animation-duration: 2s;
+ animation-name: opacity;
+}
 
+.popup__game-over {
+  display: none;
+ }
+
+@keyframes opacity {
+  from {
+    opacity: 0; 
+  }
+
+  to {
+opacity: 1;
+  }
 }
