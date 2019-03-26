@@ -99,8 +99,16 @@ body {
   margin: 1em 5px;
 }
 
-.lives__heart:last-of-type {
+.lives__heart:last-of-type, 
+.no__heart:last-of-type {
   margin-right: 1em;
+}
+
+.no-heart {
+  width: 22px;
+  height: 20px;
+  background: url(../img/no-lives.svg) no-repeat;
+  margin: 1em 5px;
 }
 
 .btn {
@@ -165,7 +173,7 @@ button[type="button"]:disabled {
 .animal-box {
   font-size: 8rem;
   cursor: pointer;
-  transition: all .3s ease-in-out;
+  transition: .3s;
 }
 
 .zone__mink:nth-of-type(2) {
