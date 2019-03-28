@@ -242,6 +242,12 @@ button[type="button"]:disabled {
   line-height: 1rem;
 }
 
+.popup {
+  display: none;
+  animation-duration: 2s;
+  animation-name: opacity;
+}
+
 .popup__ok {
   position: relative;
   bottom: -50px;
@@ -262,15 +268,6 @@ button[type="button"]:disabled {
   padding-bottom: 0.7rem;
 }
 
-.popup__rules {
- display: none;
- animation-duration: 2s;
- animation-name: opacity;
-}
-
-.popup__game-over {
-  display: none;
- }
 
 @keyframes opacity {
   from {

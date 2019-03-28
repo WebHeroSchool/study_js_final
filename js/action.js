@@ -1,11 +1,12 @@
 ﻿//Посмотреть правила игры
 
 function showRules() {
-  document.getElementById("rules").style.display = "flex";
+	document.getElementById("rules").style.display = "flex";
 }
 
 function accept() {
   document.getElementById("rules").style.display = "none";
+  document.getElementById("game-over").style.display = "none";
 }
 
 //Запустить игру
@@ -41,7 +42,6 @@ class Game {
     console.log("Игра запущена");
 
     document.getElementById("btn").disabled = true;
-
   }
 
   stop() {
@@ -90,6 +90,7 @@ class Game {
 
     if (this.stepsCount == 500 || this.lives === 0) {
       this.stop();
+	  this.showResult();
     }
   }
 
@@ -114,6 +115,7 @@ class Game {
   addPoints() {
     this.score += 10;
     document.querySelector('.points__number').innerHTML = `${this.score}`;
+	document.querySelector('.game-over__score').innerHTML = `${this.score}`;
   }
 
   removeLives() {
@@ -140,4 +142,12 @@ class Game {
     this.speed = newSpeed;
     console.log(newSpeed);
   }
+  
+  
+//Показать результат
+
+  showResult() {
+	document.getElementById("game-over").style.display = "flex";
+  }
+  
 }
