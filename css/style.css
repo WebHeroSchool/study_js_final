@@ -1,15 +1,9 @@
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  margin: 10px auto;
-}
-
-.game {
-  position: relative;
-  max-width: 1440px;
-  height: 900px;
-  background: url(../img/game-zone.png) no-repeat;
   margin: 0 auto;
+  background: url(../img/game-zone.png) no-repeat center center fixed;
+  background-size: cover; 
 }
 
 .nav__menu {
@@ -154,6 +148,7 @@ button[type="button"]:disabled {
 .zone__box {
   display: flex;
   width: 920px;
+  height: 450px;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;

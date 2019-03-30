@@ -1,7 +1,7 @@
 ﻿//Посмотреть правила игры
 
 function showRules() {
-	document.getElementById("rules").style.display = "flex";
+  document.getElementById("rules").style.display = "flex";
 }
 
 function accept() {
@@ -35,6 +35,7 @@ class Game {
   }
 
   start() {
+    this.reset();
     this.timerId = setInterval(() => {
       this.step();
     }, this.speed);
@@ -58,11 +59,24 @@ class Game {
     this.minksList[this.currentMinkIndex].classList.remove('animal-box');
     this.minksList[this.currentMinkIndex].innerHTML = "";
     console.log("Игра остановлена");
+    document.getElementById("btn").disabled = false;
   }
 
   reset() {
-    if (this.isStarted === true) {
-      this.stop;
+    this.stepsCount = 0;
+    this.mouseCount = 0;
+    this.score = 0;
+    this.level = 1;
+    this.lives = 3;
+    this.speed = 1500;
+    console.log("Параметры сброшены");
+
+    document.querySelector('.level__number').innerHTML = `${this.level}`;
+    document.querySelector('.points__number').innerHTML = `${this.score}`;
+
+    const heart = document.querySelector(".lives__box");
+    for (let i = 0; i < heart.children.length; i++) {
+      heart.children[i].classList.remove('no-heart');
     }
   }
 
@@ -71,7 +85,6 @@ class Game {
   }
 
   step() {
-
     if (this.currentMinkIndex !== undefined) {
       this.minksList[this.currentMinkIndex].removeEventListener('click', this.clickHandle, false);
       this.minksList[this.currentMinkIndex].classList.remove('animal-box');
@@ -88,15 +101,16 @@ class Game {
     console.log('Шаг ' + this.stepsCount);
 
 
-    if (this.stepsCount == 500 || this.lives === 0) {
+    if (this.stepsCount == 500) {
+      console.log("Шаги закончились");
       this.stop();
-	  this.showResult();
+      this.showResult();
     }
   }
 
   handleClick() {
     if (this.animalsList[this.currentAnimalIndex] == '🐭') {
-      console.log("Mice!");
+      console.log("Мышь!");
       this.addPoints();
       this.mouseCount++;
 
@@ -107,47 +121,61 @@ class Game {
         document.querySelector('.level__number').innerHTML = `${this.level}`;
       }
     } else if (this.animalsList[this.currentAnimalIndex] !== '🐭') {
-      console.log("Not mice!");
+      console.log("Не мышь");
       this.removeLives();
+    }
+    
+    if (this.currentMinkIndex !== undefined) {
+      this.minksList[this.currentMinkIndex].removeEventListener('click', this.clickHandle, false);
+      this.minksList[this.currentMinkIndex].classList.remove('animal-box');
+      this.minksList[this.currentMinkIndex].innerHTML = "";
+      this.currentMinkIndex = undefined;
     }
   }
 
   addPoints() {
     this.score += 10;
     document.querySelector('.points__number').innerHTML = `${this.score}`;
-	document.querySelector('.game-over__score').innerHTML = `${this.score}`;
+    document.querySelector('.game-over__score').innerHTML = `${this.score}`;
   }
 
   removeLives() {
     this.lives--;
-    console.log(this.lives);
+    if (this.lives >= 0) {
+      console.log(this.lives);
 
-    const heart = document.querySelectorAll('.lives__heart');
-    for (let i = 2; i >= this.lives; i--) {
-      heart[i].classList.add('no-heart');
+      const noHeart = document.querySelectorAll('.lives__heart');
+      for (let i = 2; i >= this.lives; i--) {
+        noHeart[i].classList.add('no-heart');
+      }
+    } 
+    if (this.lives === 0) {
+      console.log('Жизни закончились');
+      this.stop();
+      this.showResult();
     }
   }
 
-  increaseSpeed() {
-    clearInterval(this.timerId);
+increaseSpeed() {
+  clearInterval(this.timerId);
 
-    const newSpeed = this.speed - this.speedBoost;
-    if (newSpeed <= 0) {
-      newSpeed = 100;
-    }
-
-    this.timerId = setInterval(() => {
-      this.step();
-    }, newSpeed);
-    this.speed = newSpeed;
-    console.log(newSpeed);
+  const newSpeed = this.speed - this.speedBoost;
+  if (newSpeed <= 0) {
+    newSpeed = 100;
   }
-  
-  
+
+  this.timerId = setInterval(() => {
+    this.step();
+  }, newSpeed);
+  this.speed = newSpeed;
+  console.log(newSpeed);
+}
+
+
 //Показать результат
 
-  showResult() {
-	document.getElementById("game-over").style.display = "flex";
-  }
-  
+showResult() {
+  document.getElementById("game-over").style.display = "flex";
+}
+
 }
